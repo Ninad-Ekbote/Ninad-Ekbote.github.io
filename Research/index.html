@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Research Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #0056b3;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .profile-img {
+            display: block;
+            margin: auto;
+            max-width: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversion of Satellite Images to Google Maps Using GAN</h1>
+        <img src="images/bg_img.jpg" alt="Your Name" width="200" height = "200">
+        <p>Welcome to my Research Project site.</p>
+    </header>
+    <nav>
+        
+    </nav>
+
+    <div id="home" class="container">
+        <h2>Home</h2>
+        <p>Welcome to my Research Project portfolio website.</p>
+    </div>
+
+    <div id="about" class="container">
+        <h2>About Me</h2>
+        <p>My name is Ninad Ekbote, and I am currently pursuing my MS in Machine Learning and Data Science at UC San Diego. 
+            As a deep learning enthusiast, I enjoy experimenting with various DL models. I am excited to share and discuss my 
+            research project based on Cycle GANs on this site.
+
+            Looking forward to engaging in insightful discussions!</p>
+    </div>
+
+    <div id="research" class="container">
+        <h2>Intro to Cycle Gan</h2>
+        <p>In the realm of image processing, there's a common challenge: how do you teach a computer to transform images from 
+            one style to another when you don't have pairs of images showing the same scene in both styles? This problem is tackled by CycleGan.</p>
+
+        <p>CycleGAN doesn't need paired images to learn how to translate between styles. Instead, it uses two main tricks. 
+            First, it employs a pair of "adversarial" networks, where one network tries to generate convincing images in the new style, 
+            while another tries to distinguish those fake images from real ones. This helps ensure the translated images look authentic.</p>
+
+            <p>Using these techniques, CycleGAN has proven effective in various tasks like changing artistic styles, morphing objects, altering seasons in images, and enhancing photos. 
+                It's a powerful tool in cases where getting pairs of images for training is impractical or impossible.</p>
+    </div>
+
+    <div id="publications" class="container">
+        <h2>Problem Definition</h2>
+        <p>The project sets out to introduce a fresh iteration of CycleGAN, dubbed CycleGAN(W-net), 
+            and evaluate its efficacy compared to the original CycleGAN in the context of transforming satellite or aerial images 
+            into interpretable maps akin to those found in Google Maps. This comparative analysis is motivated by CycleGAN's limitations, 
+            particularly its struggles with low-contrast images. 
+            By focusing on satellite imagery, the study aims to underscore how CycleGAN(W-net) overcomes this challenge.</p>
+
+            <p>Using a unified dataset, the experiment devises three subsets to gauge the models' performance across distinct image features: 
+                roads (Subset A), forests (Subset B), and bodies of water (Subset C). 
+                Both CycleGAN and CycleGAN(W-net) undergo training on 256x256x3 dimensional satellite images to produce corresponding 256x256x3 maps.</p>
+
+            <p>Through empirical investigation, it's evident that CycleGAN faces difficulties when handling low-contrast images. 
+                Consequently, CycleGAN(W-net) is proposed as a solution tailored to excel in such scenarios, showcasing enhanced performance in accurately 
+                translating these images. This project aims to shed light on the comparative strengths and weaknesses of both models, 
+                particularly in managing the diverse features present in satellite imagery. </p>
+
+    </div>
+
+    <div id="publications" class="container">
+        <h2>Dataset</h2>
+        <p>The project utilizes the TensorFlow dataset, which encompasses the TensorFlow image classification datasets, 
+            including those tailored for CycleGAN. Specifically, the maps dataset is employed for both training and testing purposes. 
+            The dataset comprises 1096 original images and 1096 corresponding label images for training, as well as 1098 original images and 1098 
+            label images for testing.
+            To facilitate further evaluation, the testing dataset is segmented into three subsets: Subset A, Subset B, and Subset C. Subset A comprises 200 road images sourced from the original test dataset, 
+            paired with their corresponding labeled images. Subset B encompasses 50 images of forests from the original test dataset, alongside their labeled counterparts. 
+            Subset C includes 50 water images, also sourced from the original test dataset, accompanied by their labeled versions.
+            
+            All images across the dataset, including subsets, adhere to a consistent size of 256x256x3 pixels. This standardized format ensures uniformity and compatibility throughout the training and evaluation processes.</p>
+
+            <img src="images/statellite image to label images.png" alt="Your Name" weight="400" height="400">
+    </div>
+
+
+    <div id="publications" class="container">
+
+        <h2>Methodology</h2>
+        <p>(1) Trained the Cycle-Gan and Pix2Pix models for converting satellite images to Google Maps images. In this step, Cycle Gan uses the U-net model as Generator. The project will use the same Generator model initially.</p>
+        <p>(2) Comparing the conversion of images both models provided and proved statistically that Pix2Pix is better at converting a satellite image to a Google Maps image.</p>
+        <p>(3)  To improve the performance of Cycle Gan the Generator U-net model was replaced by the W-net model.</p>
+    <p>(4)  This new Cycle Gan model after the replacement of the Generator model was trained to convert satellite images to Google Maps images.</p>
+<p>(5)  Later on, step 3 was repeated again in which we compared outputs from the original Cycle-Gan, Pix2Pix, and new Cycle-Gan. The outcome of this comparison is further discussed in the results section. </p>  
+
+        <img src="images/roadmap.png" alt="Your Name" weight="400" height="400">
+        <h3>CycleGAN U-net</h3>
+        <p>The GAN framework comprises two essential components: generator networks, denoted as G1 and G2. 
+            G1 is dedicated to mapping images from domain X to domain Y (e.g., transforming satellite images into Google Maps), 
+            denoted as G1(X → Y), while G2 handles the reverse mapping from domain Y to domain X, labeled as G2(Y → X) 
+            (e.g., converting Google Maps back to satellite images). Both generators are trained using adversarial loss, 
+            a technique that pits them against discriminator networks.
+
+            The training process involves two discriminators, termed D1 and D2. D1's role is to discern between the output images generated by 
+            G1 and the actual images from domain Y, ensuring that the generated images resemble authentic samples from the target domain. Likewise, 
+            D2 is tasked with distinguishing between the output images produced by G2 and the input images from domain X, aiming to enforce fidelity 
+            to the original input data.</p>
+            
+        <h3>CycleGAN W-net</h3>
+
+        <p>The CycleGAN model with W-net maintains most aspects of the original CycleGAN but 
+            replaces the U-net architecture in the generator model. This adaptation increases computational demands but remains 
+            feasible with existing open-source hardware. W-net addresses underfitting by adding layers and neurons, and regularization techniques are explored. 
+            No changes are made to the discriminator network. Despite W-net's original design for unsupervised learning, adjustments are made to suit CycleGAN's 
+            pseudo-unsupervised learning approach. Henceforth, this model is referred to as CycleGAN W-net.</p>
+
+            <img src="images/Workflow.png" alt="Your Name" weight="400" height="400">
+
+        <h3>Metrices</h3>
+        
+        
+        <p> We will use three Metrices for evaluation</p>
+
+        <img src="images/SSIM.png" alt="Your Name" weight="100" height="100">
+        <br>
+        <img src="images/PSNR.png" alt="Your Name" weight="200" height="200">
+        <br>
+        <img src="images/SRE.png" alt="Your Name" weight="150" height="150">
+
+
+        <h3>Analysis</h3>
+
+        <img src="images/disparity.png" alt="Your Name" weight="600" height="600">
+        <br>
+        <br>
+        <br>
+        <p>PSNR SCORES</p>
+        <img src="images/psnrresults.png" alt="Your Name" weight="200" height="200">
+        <br>
+        
+        <br>
+        <br>   
+        <p>SRE SCORES</p>
+        <img src="images/SRERESULTS.png" alt="Your Name" weight="200" height="200">
+
+        
+        <br>
+        <br>   
+        <p>SSIM SCORES</p>
+        <img src="images/SSIMRESULTS.png" alt="Your Name" weight="200" height="200">
+            
+
+           
+    </div>
+
+    <div id="publications" class="container">
+        <h2>A/B testing with the help of Z testing</h2>
+        <p>To conduct a two-sample Z-test, the following conditions must be satisfied:</p>
+        <p>We will use Z-testing to determine whether CycleGan(W-net) and original CycleGan are similar or not.</p>
+        <p>(1) Our sample size is greater than 30.
+        <p>(2) Data points should be independent of each other. In other words, one data point isn’t related or doesn’t affect another data point.</p>
+        <p>(3) Our data should be normally distributed. However, for large sample sizes (over 30) this doesn’t always matter.</p> 
+        <p>(4) Our data should be randomly selected from a population, where each item has an equal chance of being selected.</p> 
+        <p>(5) Sample sizes should be equal if possible. </p>
+
+
+        <p>We set up a Hypothesis test. The Null Hypothesis (H0) posits that CycleGAN U-net and CycleGAN W-net produce equivalent outputs, suggesting the models are interchangeable. The Alternative Hypothesis (H1) suggests that the outputs are not equivalent, indicating performance differences. To test these hypotheses, our dataset is split into several subsets:
+
+            Train Dataset (1096 images)
+            Test Dataset (1098 images)
+            Road (200 images)
+            Jungle (50 images)
+            Water (50 images)
+            We use these subsets, especially the Water and Jungle datasets, to evaluate the image-to-image translation of both models. </p>
+           
+            <img src="images/SSIM_P_FINAL.png" alt="Your Name" weight="200" height="200">
+            <br>
+            <img src="images/PSNR_P.png" alt="Your Name" weight="200" height="200">
+            <br>
+            <img src="images/SRE_P.png" alt="Your Name" weight="200" height="200">
+
+            <h2>Conclusions from A/B Testing</h2>
+
+            <p>
+                These results showcase that the Null Hypothesis(H0) is rejected in the majority of cases. The significance of this finding is that the normal 
+                distribution obtained from SSIM, SRE, and PSNR values (these values in turn obtained from the output of Cycle Gan (U-Net) Cycle Gan(W-net)) are 
+                two separate distributions hence there is a disparity between the performances of these two Cycle Gan model. The mean values of SSIM, SRE, and 
+                PSNR scores are greater in the case of Cycle Gan (W-net) than in Cycle Gan (U-net). This experimentation proves two things: (1) Through Z-testing 
+                we establish that there is a disparity between Cycle Gan (U-net) and Cycle Gan (W-net). (2) Mean values obtained from Cycle Gan (W-net) are greater 
+                than Cycle Gan (U-net) this proves that the outputs obtained from Cycle Gan W-net resemble the ideal output much better than Cycle Gan (U-net) 
+                irrespective of whether the input image is a low contrast image or high contrast image.
+                
+
+            </p>
+
+
+            
+
+
+            
+    </div>
+
+
+    <div id="publications" class="container">
+
+        <h2>Thank you for your Time</h2>
+        <p>If you want full details of the project you can click on the link below</p>
+        <a href="https://link.springer.com/chapter/10.1007/978-981-99-2602-2_9">Click here</a>
+        
+        
+
+    </div>
+        
+
+
+
+           
+    
+
+    <div id="contact" class="container">
+        <h2>Contact</h2>
+        <a href="https://www.linkedin.com/in/ninad-ekbote-04837817a/">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" height="50" weight="50" />
+            My linkedin account 
+          </a>
+    </div>
+
+    <footer>
+        <p>Copyright © Ninad Ekbote 2024</p>
+    </footer>
+</body>
+</html>
